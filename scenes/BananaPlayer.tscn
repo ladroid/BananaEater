@@ -1,0 +1,75 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://sprites/bananaplayer/died/died1.png" type="Texture" id=1]
+[ext_resource path="res://sprites/bananaplayer/died/died2.png" type="Texture" id=2]
+[ext_resource path="res://sprites/bananaplayer/died/died3.png" type="Texture" id=3]
+[ext_resource path="res://sprites/bananaplayer/died/died4.png" type="Texture" id=4]
+[ext_resource path="res://sprites/bananaplayer/idle/idle2.png" type="Texture" id=5]
+[ext_resource path="res://sprites/bananaplayer/run/run2.png" type="Texture" id=6]
+[ext_resource path="res://sprites/bananaplayer/idle/idle4.png" type="Texture" id=7]
+[ext_resource path="res://sprites/bananaplayer/wonder/wonder1.png" type="Texture" id=8]
+[ext_resource path="res://sprites/bananaplayer/run/run3.png" type="Texture" id=9]
+[ext_resource path="res://sprites/bananaplayer/idle/idle3.png" type="Texture" id=10]
+[ext_resource path="res://sprites/bananaplayer/run/run4.png" type="Texture" id=11]
+[ext_resource path="res://sprites/bananaplayer/wonder/wonder3.png" type="Texture" id=12]
+[ext_resource path="res://sprites/bananaplayer/grab/grab2.png" type="Texture" id=13]
+[ext_resource path="res://sprites/bananaplayer/grab/grab4.png" type="Texture" id=14]
+[ext_resource path="res://sprites/bananaplayer/grab/grab3.png" type="Texture" id=15]
+[ext_resource path="res://sprites/bananaplayer/wonder/wonder4.png" type="Texture" id=16]
+[ext_resource path="res://sprites/bananaplayer/run/run1.png" type="Texture" id=17]
+[ext_resource path="res://sprites/bananaplayer/wonder/wonder2.png" type="Texture" id=18]
+[ext_resource path="res://sprites/bananaplayer/idle/idle1.png" type="Texture" id=19]
+[ext_resource path="res://sprites/bananaplayer/grab/grab1.png" type="Texture" id=20]
+[ext_resource path="res://scripts/BananaPlayer.gd" type="Script" id=21]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 18 ), ExtResource( 12 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "wonder",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "grab",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "idel",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "died",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 14.562, 21.9706 )
+
+[node name="BananaPlayer" type="KinematicBody2D"]
+script = ExtResource( 21 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 13.5, 19 )
+scale = Vector2( 3.7, 3.23529 )
+frames = SubResource( 1 )
+animation = "idel"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 13.8733, 23.1222 )
+shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+limit_left = 0
+limit_top = -30
+limit_right = 2270
+limit_bottom = 656
+smoothing_enabled = true

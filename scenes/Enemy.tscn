@@ -1,0 +1,66 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://sprites/slime/run/slime-move-1.png" type="Texture" id=1]
+[ext_resource path="res://sprites/slime/idle/slime-idle-1.png" type="Texture" id=2]
+[ext_resource path="res://sprites/slime/run/slime-move-0.png" type="Texture" id=3]
+[ext_resource path="res://sprites/slime/idle/slime-idle-2.png" type="Texture" id=4]
+[ext_resource path="res://sprites/slime/idle/slime-idle-0.png" type="Texture" id=5]
+[ext_resource path="res://sprites/slime/attack/slime-attack-1.png" type="Texture" id=6]
+[ext_resource path="res://sprites/slime/attack/slime-attack-2.png" type="Texture" id=7]
+[ext_resource path="res://sprites/slime/attack/slime-attack-3.png" type="Texture" id=8]
+[ext_resource path="res://sprites/slime/attack/slime-attack-4.png" type="Texture" id=9]
+[ext_resource path="res://sprites/slime/die/slime-die-3.png" type="Texture" id=10]
+[ext_resource path="res://sprites/slime/run/slime-move-2.png" type="Texture" id=11]
+[ext_resource path="res://sprites/slime/die/slime-die-0.png" type="Texture" id=12]
+[ext_resource path="res://sprites/slime/die/slime-die-1.png" type="Texture" id=13]
+[ext_resource path="res://sprites/slime/idle/slime-idle-3.png" type="Texture" id=14]
+[ext_resource path="res://sprites/slime/hurt/slime-hurt-0.png" type="Texture" id=15]
+[ext_resource path="res://sprites/slime/hurt/slime-hurt-1.png" type="Texture" id=16]
+[ext_resource path="res://sprites/slime/hurt/slime-hurt-2.png" type="Texture" id=17]
+[ext_resource path="res://sprites/slime/hurt/slime-hurt-3.png" type="Texture" id=18]
+[ext_resource path="res://sprites/slime/attack/slime-attack-0.png" type="Texture" id=19]
+[ext_resource path="res://sprites/slime/die/slime-die-2.png" type="Texture" id=20]
+[ext_resource path="res://sprites/slime/run/slime-move-3.png" type="Texture" id=21]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 20 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "die",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 1 ), ExtResource( 11 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "hurt",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "attack",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 35.4074, 14.2344 )
+
+[node name="Enemy" type="Area2D"]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 28.974, 23.9811 )
+scale = Vector2( 2.81087, 2.91849 )
+frames = SubResource( 1 )
+animation = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 30.2346, 44.6665 )
+shape = SubResource( 2 )

@@ -7,6 +7,8 @@ var timer = 0.0
 func _ready():
 	set_physics_process(true)
 	randomize()
+	$BananaPlayer/DialogueBox.visible = false
+	#$DialogueBox.visible = false
 
 func spawn_banana():
 	var banana = banana_scn.instance()
@@ -23,7 +25,3 @@ func _physics_process(delta):
 		timer -= banana_spawn_delay
 		spawn_banana()
 	timer += delta
-
-#func _process(delta):
-	#yield(get_tree().create_timer(10), "timeout")
-	#spawn_banana()

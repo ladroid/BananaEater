@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://tileset/ground tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/BananaPlayer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Banana.tscn" type="PackedScene" id=3]
 [ext_resource path="res://sprites/background/background.jpg" type="Texture" id=4]
 [ext_resource path="res://scripts/World.gd" type="Script" id=5]
+[ext_resource path="res://scenes/DialogueBox.tscn" type="PackedScene" id=6]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 5 )
@@ -18,6 +19,10 @@ tile_data = PoolIntArray( 1245327, 8, 0, 1310863, 8, 0, 1376256, 6, 0, 1376399, 
 
 [node name="BananaPlayer" parent="." instance=ExtResource( 2 )]
 position = Vector2( 237.304, 544.155 )
+
+[node name="DialogueBox" parent="BananaPlayer" instance=ExtResource( 6 )]
+position = Vector2( -113.961, -219.151 )
+scale = Vector2( 0.260552, 0.350535 )
 
 [node name="Banana" parent="." instance=ExtResource( 3 )]
 position = Vector2( 439.953, 550.983 )

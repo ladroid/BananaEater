@@ -8,6 +8,7 @@ var on_ground = false
 var is_dead = false
 var speed = 250
 var jump_power = -300
+var locked = false
 
 func _physics_process(delta):
 	if is_dead == false:
@@ -48,3 +49,19 @@ func _physics_process(delta):
 		
 		if Input.is_action_just_pressed("space"):
 			$AnimatedSprite.play("grab")
+		
+		var energy = $"/root/Global".energy_count
+		if energy <= 100:
+			locked = false
+			if locked == false:
+				get_parent().get_node("BananaPlayer/DialogueBox").visible = true
+				#get_parent().get_node("DialogueBox").visible = true
+		elif energy >= 100:
+			locked = true
+			if locked == true:
+				get_parent().get_node("BananaPlayer/DialogueBox").visible = false
+				#get_parent().get_node("DialogueBox").visible = false
+		
+		if Input.is_action_just_pressed("a_button"):
+			get_parent().get_node("BananaPlayer/DialogueBox").visible = false
+			locked = true

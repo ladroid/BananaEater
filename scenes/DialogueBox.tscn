@@ -20,9 +20,9 @@ texture_scale = Vector2( 0.261, 0.351 )
 polygon = PoolVector2Array( 64, 448, 64, 576, 896, 576, 896, 448 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 204.172
+margin_left = 183.755
 margin_top = 453.818
-margin_right = 796.172
+margin_right = 775.755
 margin_bottom = 523.818
 custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0.996078, 0.996078, 0.996078, 1 )

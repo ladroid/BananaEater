@@ -55,6 +55,8 @@ func _physics_process(delta):
 			locked = false
 			if locked == false:
 				get_parent().get_node("BananaPlayer/DialogueBox").visible = true
+				if velocity.x == 0:
+					$AnimatedSprite.play("wonder")
 				#get_parent().get_node("DialogueBox").visible = true
 		elif energy >= 100:
 			locked = true
@@ -65,3 +67,7 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("a_button"):
 			get_parent().get_node("BananaPlayer/DialogueBox").visible = false
 			locked = true
+			
+func dead():
+	$AnimatedSprite.play("died")
+	queue_free()

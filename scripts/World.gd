@@ -1,7 +1,7 @@
 extends Node2D
 
 var banana_scn = preload("res://scenes/Banana.tscn")
-var banana_spawn_delay = 5.0/60.0
+var banana_spawn_delay = 20.0/60.0
 var timer = 0.0
 
 func _ready():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://tileset/ground tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/BananaPlayer.tscn" type="PackedScene" id=2]
@@ -7,6 +7,12 @@
 [ext_resource path="res://scripts/World.gd" type="Script" id=5]
 [ext_resource path="res://scenes/DialogueBox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://font/Pixel.ttf" type="DynamicFontData" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+outline_color = Color( 0.988235, 0.988235, 0.988235, 1 )
+font_data = ExtResource( 8 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 5 )
@@ -48,10 +54,7 @@ position = Vector2( 73.2939, -39.2646 )
 position = Vector2( 127.201, -24.7269 )
 
 [node name="Position2D5" type="Position2D" parent="SpawnPosition"]
-position = Vector2( 250.369, -34.6376 )
-
-[node name="Position2D6" type="Position2D" parent="SpawnPosition"]
-position = Vector2( 288.042, -34.638 )
+position = Vector2( 250.369, -48.4146 )
 
 [node name="Position2D7" type="Position2D" parent="SpawnPosition"]
 position = Vector2( 338.798, -26.4415 )
@@ -103,3 +106,25 @@ position = Vector2( 2083.41, -10.076 )
 
 [node name="Enemy" parent="." instance=ExtResource( 7 )]
 position = Vector2( 360.698, 527.061 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Control"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_fonts/normal_font = SubResource( 1 )
+custom_colors/default_color = Color( 0.996078, 0.909804, 0.509804, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

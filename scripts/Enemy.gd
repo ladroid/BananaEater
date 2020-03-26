@@ -9,11 +9,13 @@ var velocity = Vector2()
 var direction = 1
 var is_dead = false
 
-func _ready():
-	pass
-	#randomize()
-	#hp = randi() % 100 + 1
-	#rand_enemy = randi() & 1
+func dead():
+	hp -= 1
+	if hp <= 0:
+		is_dead = true
+		$AnimatedSprite.play("die")
+		$CollisionShape2D.set_deferred("disabled", true)
+		queue_free()
 
 func _physics_process(delta):
 	if is_dead == false:

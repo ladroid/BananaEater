@@ -82,3 +82,6 @@ limit_top = -30
 limit_right = 2270
 limit_bottom = 656
 smoothing_enabled = true
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 40.7365, 20.1104 )

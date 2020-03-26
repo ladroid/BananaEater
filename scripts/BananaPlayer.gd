@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+const bananabullet = preload("res://scenes/BananaBullet.tscn")
 const gravity = 10
 const FLOOR = Vector2(0, -1)
 
@@ -16,14 +17,14 @@ func _physics_process(delta):
 			velocity.x = speed
 			$AnimatedSprite.play("run")
 			$AnimatedSprite.flip_h = false
-			#if sign($Position2D.position.x) == -1:
-				#$Position2D.position.x *= -1
+			if sign($Position2D.position.x) == -1:
+				$Position2D.position.x *= -1
 		elif Input.is_action_pressed("ui_left"):
 			velocity.x = -speed
 			$AnimatedSprite.play("run")
 			$AnimatedSprite.flip_h = true
-			#if sign($Position2D.position.x) == 1:
-				#$Position2D.position.x *= -1
+			if sign($Position2D.position.x) == 1:
+				$Position2D.position.x *= -1
 		else:
 			velocity.x = 0
 			if on_ground == true:
@@ -47,7 +48,7 @@ func _physics_process(delta):
 		
 		velocity = move_and_slide(velocity, FLOOR)
 		
-		if Input.is_action_just_pressed("space"):
+		if Input.is_action_pressed("space"):
 			$AnimatedSprite.play("grab")
 		
 		var energy = $"/root/Global".energy_count
@@ -64,10 +65,26 @@ func _physics_process(delta):
 				get_parent().get_node("BananaPlayer/DialogueBox").visible = false
 				#get_parent().get_node("DialogueBox").visible = false
 		
-		if Input.is_action_just_pressed("a_button"):
+		if Input.is_action_pressed("a_button"):
 			get_parent().get_node("BananaPlayer/DialogueBox").visible = false
 			locked = true
+		
+		if Input.is_action_pressed("ui_focus_next"):
+			if energy >= 1:
+				var banan = bananabullet.instance()
+				if sign($Position2D.position.x) == 1:
+					banan.set_banana_direction(1)
+				else:
+					banan.set_banana_direction(-1)
+				get_parent().add_child(banan)
+				banan.position = $Position2D.global_position
+			
+		if get_slide_count() > 0:
+			for i in range(get_slide_count()):
+				if "Enemy" in get_slide_collision(i).collider.name:
+					dead()
 			
 func dead():
 	$AnimatedSprite.play("died")
 	queue_free()
+	get_tree().change_scene("res://scenes/World.tscn")
